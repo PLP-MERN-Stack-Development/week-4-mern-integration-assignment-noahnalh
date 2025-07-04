@@ -20,6 +20,12 @@ export default function CreatePost() {
       .catch((err) => setError("Failed to load categories"));
   }, []);
 
+  const generateSlug = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^\w ]+/g, "")
+      .replace(/ +/g, "-");
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -29,8 +35,15 @@ export default function CreatePost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const postPayload = {
+      ...formData,
+      slug: generateSlug(formData.title),
+      author: "64d10b9c9f9d5d001fc01a0a", // 🔁 Replace with real user ID from auth
+    };
+
     try {
-      await createPost(formData);
+      await createPost(postPayload);
       navigate("/");
     } catch (err) {
       console.error(err);

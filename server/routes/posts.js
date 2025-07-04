@@ -5,7 +5,10 @@ const {
   createPost,
   updatePost,
   deletePost,
+  addComment,
 } = require("../controllers/postController");
+
+const protect = require("../middleware/authMiddleware"); // Import protect middleware
 
 const router = express.Router();
 
