@@ -7,6 +7,9 @@ const seedCategories = async () => {
     { name: "Lifestyle" },
     { name: "Business" },
     { name: "Entertainment" },
+    { name: "Sports" },
+    { name: "Science" },
+    { name: "Food" },
   ];
 
   try {
